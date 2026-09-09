@@ -31,3 +31,45 @@ O exemplo mais claro é o `.card`: ele tem padding (espaço por dentro), border 
 ## Dificuldade que tive
 
 No começo o cabeçalho ficava com o nome da loja em cima e o menu embaixo, meio esquisito e sem cara de site profissional. Resolvi transformando o `header` num flexbox (`display: flex; justify-content: space-between`), botando a logo de um lado e o menu do outro, na mesma linha — daí ficou muito mais parecido com um site de verdade. Também usei `flex-wrap: wrap` pra o menu não quebrar o layout se a tela for menor.
+
+# TH Cars - Atividade Aula 04 (Layout e Responsividade)
+
+## Sobre o projeto
+
+Continuei a página da TH Cars que já tinha o CSS de identidade visual (Aula 03) e evoluí ela pra ficar responsiva, aplicando os conceitos de Flexbox, Grid, Mobile-first e Media Query vistos em aula. Mantive as cores, fontes e o estilo "ficha técnica de carro" que já tinha, só mudei a estrutura do layout.
+
+## O que eu adicionei
+
+### Flexbox
+Já usava `display: flex` no header, mas faltava deixar as propriedades completas. Agora o `header`, o `nav ul`, o `.card ul`, os itens do `#servicos` e o `#contato ul` usam todas as propriedades pedidas: `display: flex`, `flex-direction`, `justify-content`, `align-items`, `gap` e `flex-wrap`.
+
+### CSS Grid
+Não tinha grid nenhum na página. Criei uma seção nova dentro de "Nossos Veículos" com 3 cartões de categoria (Sedan, Hatch, SUV) usando `.categorias-grid`, com `display: grid`, `grid-template-columns` e `gap`.
+
+### Mobile-first
+Reescrevi o CSS pra ele já nascer pensando em celular: o header fica com a logo em cima e o menu embaixo (`flex-direction: column`), e os cards de categoria ficam em 1 coluna só. Só depois, dentro do `@media (min-width: 768px)`, é que eu mudo pra tela maior.
+
+### Media Query
+Usei `@media (min-width: 768px)` pra:
+- Virar o header de coluna pra linha (logo de um lado, menu do outro)
+- Virar o menu de vertical pra horizontal
+- Virar os cards de categoria de 1 coluna pra 3 colunas lado a lado
+
+### Viewport
+Adicionei a meta tag que tava faltando no `<head>`:
+```html
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+```
+Sem ela o navegador do celular tratava a página como desktop e encolhia tudo.
+
+### Unidades relativas
+Troquei boa parte dos `px` fixos por `rem` (fontes, espaçamentos, largura do `main`), usei `%` na largura da imagem do card e `fr` nas colunas do grid.
+
+## Outras mudanças
+
+- Corrigi um erro de digitação: "Carros Ret" virou "Carros Hatch"
+- Adicionei o `<footer>` no HTML — o CSS dele já existia da atividade anterior, só não tinha sido usado ainda
+
+## Dificuldade que tive
+
+A parte mais chata foi pensar mobile-first de verdade, e não só pegar o layout de desktop e diminuir. Tive que parar e imaginar primeiro como ficaria no celular (tudo empilhado, menu simples) e só depois escrever o `@media` pra "montar" o layout de desktop por cima disso.
