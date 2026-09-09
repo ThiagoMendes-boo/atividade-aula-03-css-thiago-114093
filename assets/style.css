@@ -11,13 +11,16 @@ body {
     line-height: 1.6;
 }
 
+/* ===== HEADER (mobile-first: empilhado em coluna) ===== */
 header {
     background-color: #1c1a19;
     color: #eeece5;
-    padding: 0 40px;
+    padding: 20px 5%;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 0.75rem;
     flex-wrap: wrap;
     border-bottom: 3px solid #e5a13a;
 }
@@ -26,13 +29,18 @@ header h1 {
     font-size: 1.5rem;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    padding: 22px 0;
+    padding: 0;
 }
 
 nav ul {
     list-style: none;
     display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
     gap: 4px;
+    width: 100%;
+    flex-wrap: wrap;
 }
 
 nav a {
@@ -44,6 +52,7 @@ nav a {
     letter-spacing: 0.05em;
     padding: 10px 16px;
     border-radius: 3px;
+    display: block;
     transition: background-color 0.2s ease, color 0.2s ease;
 }
 
@@ -53,13 +62,13 @@ nav a:hover {
 }
 
 main {
-    max-width: 880px;
+    max-width: 55rem;
     margin: 0 auto;
-    padding: 48px 24px;
+    padding: 3rem 1.5rem;
 }
 
 section {
-    margin-bottom: 52px;
+    margin-bottom: 3.25rem;
 }
 
 h2 {
@@ -126,7 +135,10 @@ p {
 .card ul {
     list-style: none;
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
     gap: 10px;
 }
 
@@ -138,6 +150,35 @@ p {
     border: 1px solid #1c1a19;
     border-radius: 2px;
     padding: 6px 14px;
+}
+
+/* ===== GRID de categorias (mobile-first: 1 coluna) ===== */
+.categorias-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.categoria {
+    background-color: #fbfaf7;
+    border: 1px solid #d8d3c9;
+    border-left: 4px solid #e5a13a;
+    padding: 1.2rem;
+}
+
+.categoria h3 {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.5rem;
+    color: #1c1a19;
+}
+
+.categoria p {
+    font-size: 0.85rem;
+    margin-bottom: 0;
+    color: #5a564f;
 }
 
 #servicos {
@@ -163,6 +204,7 @@ p {
 #servicos li {
     counter-increment: step;
     display: flex;
+    flex-direction: row;
     align-items: center;
     gap: 16px;
     padding: 14px 0;
@@ -230,4 +272,34 @@ footer {
     font-size: 0.8rem;
     letter-spacing: 0.03em;
     border-top: 3px solid #e5a13a;
+}
+
+/* =========================================================
+   MEDIA QUERY — telas maiores (tablet/desktop)
+   Mobile-first: aqui a gente reorganiza o layout, não só encolhe
+   ========================================================= */
+@media (min-width: 768px) {
+    header {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 40px;
+    }
+
+    header h1 {
+        padding: 22px 0;
+    }
+
+    nav ul {
+        flex-direction: row;
+        width: auto;
+    }
+
+    nav a {
+        display: inline-block;
+    }
+
+    .categorias-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
